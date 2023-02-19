@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function(){
     return view('welcome');
+});
+
+// Authentication routes
+Route::get('/auth/microsoft', function(){
+    return Socialite::driver('microsoft')->redirect();
+});
+Route::get('/auth/microsoft/callback', function(){
+    $user = Socialite::driver('microsoft')->user();
+    return $user->getName();
 });

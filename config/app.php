@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Facade;
+use SocialiteProviders\Manager\ServiceProvider;
 
 return [
 
@@ -195,6 +196,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        ServiceProvider::class,
     ],
 
     /*
